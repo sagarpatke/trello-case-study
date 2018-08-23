@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
@@ -31,18 +31,21 @@ class Boards extends Component {
     const boardsList = this.props.boardsList || [];
 
     return (
-      <Grid container spacing={16}>
-        {boardsList.map(board => <Grid key={board.id} item xl={2}>
-          <Link to={`/boards/${board.id}`}>
-          
-            <Card>
-              <CardContent>
-                <Typography variant="headline" component="h4"> {board.name} </Typography>
-              </CardContent>
-            </Card>
-          </Link>
-        </Grid>)}
-      </Grid>
+      <Fragment>
+        <h2>Boards</h2>
+        <Grid container spacing={16}>
+          {boardsList.map(board => <Grid key={board.id} item xl={2}>
+            <Link to={`/boards/${board.id}`}>
+            
+              <Card>
+                <CardContent>
+                  <Typography variant="headline" component="h4"> {board.name} </Typography>
+                </CardContent>
+              </Card>
+            </Link>
+          </Grid>)}
+        </Grid>
+      </Fragment>
     );
   }
 }
